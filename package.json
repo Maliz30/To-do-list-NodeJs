@@ -1,0 +1,22 @@
+{
+  "name": "to-do-list-nodejs",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido durante capacitação de NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maliz30/To-do-list-NodeJs.git"
+  },
+  "author": "Maria Alice Bernardo da Costa Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maliz30/To-do-list-NodeJs/issues"
+  },
+  "homepage": "https://github.com/Maliz30/To-do-list-NodeJs#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
