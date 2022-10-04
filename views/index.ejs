@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body>
+
+    <header>
+
+        <% if(task == null) {%>
+            <form action="/create" method="post">
+                <input type="text" name="task" id="task" placeholder="Insira uma tarefa">
+                <button id="addButton" type="submit">Adicionar</button>
+            </form>
+        <% } else { %>
+            <form action="/updateOne/<%= task._id %>" method="post">
+                <input type="text" name="task" id="task" value="<%= task.task %>">
+                <button id="addButton" type="submit">Atualizar</button>
+            </form>
+        <% } %>
+
+    </header>
+
+    <section id="tasks">
+        <ul>
+            <% tasksList .forEach((task) => { %>
+                <li>
+
+                    <%= task.task %> | <%= task.date.toLocaleDateString('pt-BR') %>
+                    <a href="/getById/<%= task._id %>/update">Editar</a>
+                    <a href="/getById/<%= task._id %>/delete">Apagar</a>
+                </li>
+            <% }) %>
+        </ul> 
+    </section>
+    
+    <% if (taskDelete != null) { %>
+    <section id="modal">
+        <div id="card">
+            <a href="/">x</a>
+            <h2>Confirmação</h2>
+            <hr>
+            <p>Deseja realmeente apagar a tarefa: <%= taskDelete.task %>? </p>
+            <a href="/">Cancelar</a>
+            <a href="/deleteOne>>>>>>/<%= taskDelete._id %>">Confirmar</a>
+
+        </div>
+
+    </section>
+    <% } %>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
