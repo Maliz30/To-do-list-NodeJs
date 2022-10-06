@@ -1,4 +1,6 @@
+
 const Task = require("../models/Task");
+const authMiddleware = require('../middlewares/auth')
 
 let message = "";
 let type = "";
@@ -27,14 +29,14 @@ const createTask = async (req, res) => {
 	if (!task.task) {
 		message = "Insira um texto, antes de adicionar a tarefa!";
 		type = "danger";
-		return res.redirect("/");
+		return res.redirect("/home");
 	}
 
 	try {
 		await Task.create(task);
 		message = "Tarefa adicionada com sucesso!";
 		type = "success";
-		return res.redirect("/");
+		return res.redirect("/home");
 	} catch (err) {
 		res.status(500).send({ error: err.message });
 	}
@@ -61,7 +63,7 @@ const updateOneTask = async (req, res) => {
 		await Task.updateOne({ _id: req.params.id }, task);
 		message = "Tarefa atualizada com sucesso!";
 		type = "success";
-		res.redirect("/");
+		res.redirect("/home");
 	} catch (err) {
 		res.status(500).send({ error: err.message });
 	}
@@ -72,7 +74,7 @@ const deleteOneTask = async (req, res) => {
 		await Task.deleteOne({ _id: req.params.id });
 		message = "Tarefa apagada com sucesso!";
 		type = "success";
-		res.redirect("/");
+		res.redirect("/home");
 	} catch (err) {
 		res.status(500).send({ error: err.message });
 	}
@@ -85,7 +87,7 @@ const taskCheck = async (req, res) => {
 		task.check = task.check ? false : true;
 
 		await Task.updateOne({ _id: req.params.id }, task);
-		res.redirect("/");
+		res.redirect("/home");
 	} catch (err) {
 		res.status(500).send({ error: err.message });
 	}
