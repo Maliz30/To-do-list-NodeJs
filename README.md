@@ -4,7 +4,7 @@ Projeto desenvolvido durante capacitação de NodeJs, criada pelo Sapatin, squad
 Para rodar localmente:
   - Clone o repositório:
     ``` bash
-        git clone 
+        git clone https://github.com/Maliz30/To-do-list-NodeJs.git
     ```
   - Navegue até o diretório do projeto:
     ```bash
@@ -15,9 +15,12 @@ Para rodar localmente:
         npm init
     ```
   - Adicione as variaveis ambiente:
-    Renomeie o arquivo ```bash .env.example ``` para ```bash .env ```
+    Renomeie o arquivo ```bash .env.example ```  para ```bash .env ```
+     <br>
       Dentro deste arquivo: 
-        Escreva na váriavel PORT, a porta em que deseja rodar o projeto
+        <br>
+        Escreva na váriavel PORT, a porta em que deseja rodar o projeto 
+        <br>
         Cole na variável DB_URI o link para o seu banco de dados MongoDB
   - Rode o projeto:
     ```bash
