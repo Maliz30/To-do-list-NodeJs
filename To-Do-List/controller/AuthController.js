@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const authConfig = require("../config/auth.json");
@@ -10,47 +10,61 @@ function generateToken(params = {}){
     });
 }
 
+const registerLoginHome = (req, res) => {
+	const { email } = req.body.email;
+	const { password } = req.body.password;
+
+	res.render("registerLogin", { 
+		email, 
+		password,
+	});
+}
+
 const registerUser = async (req, res) => {
-	const { email } = req.body;
+	const user = req.body;
+	email = user.email;
 
 	try {
 		if (await User.findOne({ email }))
 			res.status(400).send({ error: "Email já cadastrado!" });
 
-		const user = await User.create(req.body);
+		user = await User.create(req.body);
 
 		user.password = undefined;
-		res.send({ 
+
+		return res.send({ 
             user,
-            token: generateToken({ id: user.id }),
-        });
+            token: generateToken({ id: user._id }),
+        });		
 
 	} catch (err) {
 		res.status(400).send({ error: err.message });
 	}
+
 };
 
 const authenticateUser = async (req, res) => {
-	const { email } = req.body;
-	const { password } = req.body;
+	const email = req.body.email;
+	const password = req.body.password;
 
-	const user = await User.findOne({ email }).select("+password");
+	user = await User.findOne({ email }).select("+password");
 
 	if (!user) 
-        res.status(400).send({ error: "Usuário não cadastrado" });
+        return res.status(400).send({ error: "Usuário não cadastrado" });
 
 	if (!await bcrypt.compare(password, user.password))
-		res.status(400).send({ error: "Senha incorreta" });
+		return res.status(400).send({ error: "Senha incorreta" });
 
     user.password = undefined;
 
 	res.send({ 
         user, 
-        token: generateToken({ id: user.id }),
+        token: generateToken({ id: user._id }),
     });
 };
 
 module.exports = {
+	registerLoginHome,
 	registerUser,
 	authenticateUser,
 };
