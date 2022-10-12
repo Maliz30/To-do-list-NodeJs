@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Gilda+Display&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair', serif;
+}
+
+body {
+    background-color: #708566;
+    width: 100%;
+    height: 100%;
+    color: #25361c;
+    display: block;
+}

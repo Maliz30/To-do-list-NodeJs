@@ -25,6 +25,8 @@ const registerUser = async (req, res) => {
             token: generateToken({ id: user.id }),
         });
 
+		return res.redirect("/home");
+
 	} catch (err) {
 		res.status(400).send({ error: err.message });
 	}

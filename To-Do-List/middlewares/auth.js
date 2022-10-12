@@ -23,6 +23,6 @@ module.exports = (req, res, next) => {
 		if (err) return res.status(401).send({ error: "Token inválido" });
 
 		req.userId = decoded.id;
-		return next();
+		return res.redirect("/home");
 	});
 };

@@ -3,6 +3,9 @@ const TaskController = require("../controller/TaskController");
 const AuthController = require("../controller/AuthController");
 const AuthMiddleware = require("../middlewares/auth");
 
+routes.get("/", (req, res) => {
+    return res.render("register");
+});
 routes.post("/register", AuthController.registerUser);
 routes.post("/authenticate", AuthController.authenticateUser);
 
