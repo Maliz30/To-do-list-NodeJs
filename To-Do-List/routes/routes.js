@@ -3,6 +3,7 @@ const TaskController = require("../controller/TaskController");
 const AuthController = require("../controller/AuthController");
 const AuthMiddleware = require("../middlewares/auth");
 
+routes.get("/", AuthController.registerLoginHome);
 routes.post("/register", AuthController.registerUser);
 routes.post("/authenticate", AuthController.authenticateUser);
 
@@ -15,8 +16,4 @@ routes.post("/updateOne/:id", TaskController.updateOneTask);
 routes.get("/deleteOne/:id", TaskController.deleteOneTask);
 routes.get("/check/:id", TaskController.taskCheck);
 
-
-
-
-
-module.exports = routes;
+module.exports = app => routes;

@@ -1,6 +1,4 @@
-
 const Task = require("../models/Task");
-const authMiddleware = require('../middlewares/auth')
 
 let message = "";
 let type = "";
