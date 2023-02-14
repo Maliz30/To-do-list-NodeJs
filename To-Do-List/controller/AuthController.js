@@ -3,6 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const authConfig = require("../config/auth.json");
+const { request } = require("express");
+
+let token = "";
+let id = "";
 
 function generateToken(params = {}){
     return jwt.sign(params, authConfig.secret, {
@@ -24,8 +28,6 @@ const registerUser = async (req, res) => {
             user,
             token: generateToken({ id: user.id }),
         });
-
-		return res.redirect("/home");
 
 	} catch (err) {
 		res.status(400).send({ error: err.message });
@@ -50,6 +52,16 @@ const authenticateUser = async (req, res) => {
         user, 
         token: generateToken({ id: user.id }),
     });
+
+	//id = user.id;
+	//token = generateToken({ id: user.id });
+	//res.set('token', token);
+	//res.set('authorization', token);
+	//res.json({token});
+	//res.append('Access-Control-Expose-Headers', '*')
+	//res.set("x-access-token", token);
+
+	//res.redirect("/home/:id/:`${token}`");
 };
 
 module.exports = {

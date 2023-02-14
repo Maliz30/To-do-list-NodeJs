@@ -1,11 +1,17 @@
 
 const Task = require("../models/Task");
-const authMiddleware = require('../middlewares/auth')
 
+const routes = require("express").Router();
+//const AuthMiddleware = require('../middlewares/auth')
+
+//routes.use(AuthMiddleware);
+let token = "";
 let message = "";
 let type = "";
 
 const getAllTasks = async (req, res) => {
+	token = req.params.token;
+	
 	try {
 		setTimeout(() => {
 			message = "";

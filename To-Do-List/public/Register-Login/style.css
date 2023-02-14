@@ -12,4 +12,79 @@ body {
     height: 100%;
     color: #25361c;
     display: block;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-box{
+    width: fit-content;
+    margin: 7rem auto;
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px 0px #464646;
+    background-color: white;
+    padding: 2.2rem 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.register-box{
+    margin-right: 2.5rem;
+}
+
+.vertical-line{
+    border-left: 2px solid #b4b4b4;
+    height: 13.7rem;
+    border-radius: 15px;
+}
+
+.login-box{
+    margin-left: 2.5rem;
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h1{
+    margin: .5rem 0rem;
+}
+
+label{
+    margin-top: .8rem;
+}
+
+input{
+    border-radius: 7px;
+    height: auto;
+    width: 13rem;
+    padding: .3rem;
+    box-shadow: 0px 1px 2px #b4b4b4;
+    border: thin solid #7e7e7e;
+    font-size: 16px;
+    outline: none;
+}
+
+button{
+    width: 13rem;
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 2px 1px #b4b4b4;
+    background-color: #587c44;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-top: 1.5rem;
+    margin-left: .2rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #6a9453;
 }

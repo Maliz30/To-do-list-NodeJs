@@ -11,6 +11,8 @@ routes.post("/authenticate", AuthController.authenticateUser);
 
 routes.use(AuthMiddleware);
 
+//routes.get("/home/:id/:token", TaskController.getAllTasks);
+
 routes.get("/home", TaskController.getAllTasks);
 routes.post("/create", TaskController.createTask);
 routes.get("/getById/:id/:method", TaskController.getById);
